@@ -4,11 +4,14 @@ import time
 
 import optuna
 import pandas as pd
+import pymysql
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 
 from utils import Evaluation
+
+pymysql.install_as_MySQLdb()
 
 
 def main(config):
