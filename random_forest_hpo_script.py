@@ -15,7 +15,7 @@ pymysql.install_as_MySQLdb()
 
 
 def main(config):
-    df = pd.read_csv('data/staticANDpedestrianANDtraffic_dateUpdated.csv')
+    df = pd.read_csv('data/static_dynamic.csv')
     df = df.dropna()  # drop 96 records without pedestrian count
     column = ['SA1_CODE21']
     df = df.drop(column, axis=1)
@@ -57,7 +57,7 @@ def objective(trial):
     params["n_estimators"] = trial.suggest_int("n_estimators", 20, 1000)
     params["min_sample_leaf"] = trial.suggest_int("min_sample_leaf", 1, 20)
     params["min_sample_split"] = trial.suggest_int("min_sample_split", 2, 40)
-    params["max_features"] = trial.suggest_float("max_features", 0, 1.0, step=0.1)
+    params["max_features"] = trial.suggest_float("max_features", 1, 1.0, step=0.1)
     params["max_depth"] = trial.suggest_int("max_depth", 0, 40)
     if params["max_depth"] == 0:
         params["max_depth"] = None
